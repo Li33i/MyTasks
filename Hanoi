@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+void Hanoi(int n, int start, int end) {
+  if (n == 1) {
+    // условие остановки
+    // cout << n << " " << start << " " << end << '\n';
+    cout << n << " c " << start << " на " << end << '\n';
+    return; // выходим из фукнции
+  }
+
+  // n > 1
+
+  // 1. Переложить n - 1 дисков на другую палку
+  // 2. Переложить нижний диск на нужную палку
+  // 3. Переложить n - 1 на нужную.
+
+  int other = 6 - start - end; // номер промежуточной палки
+
+  Hanoi(n - 1, start, other);
+  // cout << n << " " << start << " " << end << '\n';
+
+  cout << n << " c " << start << " на " << end << '\n';
+  Hanoi(n - 1, other, end);
+}
+
+int main() {
+  int h;
+  cin >> h;
+
+  Hanoi(h, 1, 3);
+}
